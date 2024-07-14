@@ -1,0 +1,65 @@
+#LeetCode: 496
+
+class Solution {
+public:
+    vector<int> nextGreaterElement(vector<int>& nums1, vector<int>& nums2) 
+    {
+        // vector<int>ans;
+        // for(int i=0;i<nums1.size();i++)
+        // {
+        //     int ele=nums1[i];
+        //     //find the position of that element in nums2
+        //     auto it=find(nums2.begin(),nums2.end(),ele);
+        //     //if you find the position then point the iterator to next element in nums2
+        //     if(it!=nums2.end())
+        //     it++;
+        //     //asssign current greatest element to g for re-checking if not found
+        //     auto g=ele;
+        //     for(auto itnew=it;itnew!=nums2.end();++itnew)
+        //     {
+        //         if(*itnew>g)
+        //         {
+        //             //if found then replace the value of g
+        //             g=(*itnew);
+        //             //also insert the value of g and then leave the loop
+        //             ans.push_back(g);
+        //             break;
+        //         }
+        //     }
+        //     //if not then push -1 into the array
+        //     if(g==ele)
+        //     ans.push_back(-1);
+        // }
+        // return ans;
+
+        stack<int>st;
+        vector<int>nge(nums2.size(),-1);
+        int n=nums2.size();
+        for(int i=n-1;i>=0;i--)
+        {
+            while(!st.empty() && st.top()<=nums2[i])
+            {
+                st.pop();
+            }
+            if(!st.empty())
+            {
+                nge[i]=st.top();
+            }
+            st.push(nums2[i]);
+        }
+        vector<int>ans;
+        for(int i=0;i<nums1.size();i++)
+        {
+            for(int j=0;j<nums2.size();j++)
+            {
+                if(nums1[i]==nums2[j])
+                {
+                      ans.push_back(nge[j]);
+                    break;
+                }
+            }
+          
+        }
+        return ans;
+    }
+};
