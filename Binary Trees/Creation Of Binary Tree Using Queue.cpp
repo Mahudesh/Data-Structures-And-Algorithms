@@ -86,3 +86,69 @@ int main()
     }
     levelOrderTraversal(root);
 }
+
+//Method 2
+#include<bits/stdc++.h>
+using namespace std;
+class Node
+{
+    public:
+    int data;
+    Node* left;
+    Node* right;
+    Node(int data)
+    {
+        this->data=data;
+        left=nullptr;
+        right=nullptr;
+    }
+};
+Node* createBT(vector<int>&arr)
+{
+    Node* root=new Node(arr[0]);
+    queue<Node*>q;
+    q.push(root);
+    int ind=1;
+    while(!q.empty())
+    {
+        Node* temp=q.front();
+        q.pop();
+        if(ind<arr.size())
+        {
+            temp->left=new Node(arr[ind++]);
+            q.push(temp->left);
+        }
+        if(ind<arr.size())
+        {
+            temp->right=new Node(arr[ind++]);
+            q.push(temp->right);
+        }
+        
+    }
+    return root;
+}
+void traversal(Node* root)
+{
+    if(root==nullptr)
+    return;
+    queue<Node*>q;
+    q.push(root);
+    while(!q.empty())
+    {
+        Node* temp=q.front();
+        q.pop();
+        cout<<temp->data<<" ";
+        if(temp->left!=nullptr)
+        q.push(temp->left);
+        if(temp->right!=nullptr)
+        q.push(temp->right);
+    }
+}
+int main()
+{
+    vector<int>arr={1,3,2,4,5,6,7,8};
+    Node* root=nullptr;
+   root = createBT(arr);
+   traversal(root);
+    
+}
