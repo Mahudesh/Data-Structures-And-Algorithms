@@ -42,3 +42,47 @@ public:
         return ans;
     }
 };
+//Recursive Traversal
+/*************************************************************
+ 
+    Following is the Binary Tree node structure:
+
+    template <typename T>
+
+    class BinaryTreeNode 
+    {
+    public : 
+        T data;
+        BinaryTreeNode<T> *left;
+        BinaryTreeNode<T> *right;
+        BinaryTreeNode(T data) {
+            this -> data = data;
+            left = NULL;
+            right = NULL;
+        }
+    };
+
+*************************************************************/
+void reversePreOrderTraversal(BinaryTreeNode<int>* root, vector<int>&ans, int level)
+{
+    if(root==nullptr)
+    return;
+    //If Level Equals The 1D Vector Size Then We Are Visiting That Level For The 1st Time
+    if(level==ans.size())
+    ans.push_back(root->data);
+    if(root->right)
+    reversePreOrderTraversal(root->right,ans,level+1);
+    if(root->left)
+    reversePreOrderTraversal(root->left,ans,level+1);
+}
+vector<int> printRightView(BinaryTreeNode<int>* root) 
+{
+    // Write your code here.
+    //Recursive Way Of Traversal
+
+    //Reverse Pre Order Traversal 
+    //Root Right Left
+    vector<int>ans;
+    reversePreOrderTraversal(root,ans,0);
+    return ans;
+}
