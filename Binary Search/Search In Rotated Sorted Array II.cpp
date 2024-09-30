@@ -1,19 +1,22 @@
-class Solution {
-public:
-    int search(vector<int>& arr, int target) 
+bool Search(vector<int>& arr, int k) 
     {
+        // Code here
         int low=0;
         int high=arr.size()-1;
         while(low<=high)
         {
-            int mid=(low+high)/2;
-            if(arr[mid]==target) return mid;
-            //Check For Which Half Of The Array Is Sorted
-            //Left Sorted Array Condition
+            int mid=(low+(high-low)/2);
+            if(arr[mid]==k)
+            return true;
+            if(arr[low]==arr[mid] && arr[mid]==arr[high])
+            {
+                low++;
+                high--;
+                continue;
+            }
             if(arr[low]<=arr[mid])
             {
-                //Condition For Element To Be Present In Left Side
-                if(arr[low]<=target && target<=arr[mid])
+                if(arr[low]<=k && k<=arr[mid])
                 {
                     high=mid-1;
                 }
@@ -22,11 +25,9 @@ public:
                     low=mid+1;
                 }
             }
-            //Right Sorted Array Condition
-            else if(arr[mid]<=arr[high])
+            else 
             {
-                //Condition For ELement To Be Present In Right Side
-                if(arr[mid]<=target && target<=arr[high])
+                if(arr[mid]<=k && k<=arr[high])
                 {
                     low=mid+1;
                 }
@@ -36,6 +37,5 @@ public:
                 }
             }
         }
-        return -1;
+        return false;
     }
-};
