@@ -1,64 +1,46 @@
 public:
-  int findMini(int arr[], int size)
+  int isPossible(vector<int>& arr, int maxDays, int K, int M)
   {
-      int maxi=INT_MIN;
-      for(int i=0;i<size;i++)
+      int flowers=0;
+      int cnt=0;
+      int bouquets=0;
+      for(int i=0;i<arr.size();i++)
       {
-          if(maxi<arr[i])
+          if(arr[i]<=maxDays)
           {
-              maxi=arr[i];
-          }
-      }
-      return maxi;
-  }
-  int findSum(int arr[], int size)
-  {
-      int sum=0;
-      for(int i=0;i<size;i++)
-      {
-          sum+=arr[i];
-      }
-      return sum;
-  }
-  bool isPossible(int arr[], int maxWeight, int d, int size)
-  {
-      int days=1;
-      int sumOfWeight=0;
-      for(int i=0;i<size;i++)
-      {
-          if(sumOfWeight+arr[i]<=maxWeight)
-          {
-              sumOfWeight+=arr[i];
+              cnt++;
           }
           else
           {
-              days++;
-              sumOfWeight=arr[i];
+              cnt=0;
+          }
+          if(cnt==K)
+          {
+              bouquets++;
+              cnt=0;
           }
       }
-    //   if(sumOfWeight<=maxWeight)
-    //   days++;
-      if(days<=d)
+      if(bouquets>=M)
       return true;
       return false;
   }
-    int leastWeightCapacity(int arr[], int n, int d)
+    int solve(int M, int K, vector<int> &bloomDay)
     {
-        // code here
-        
-        int low=findMini(arr,n);
-        int high=findSum(arr,n);
-        while(low<=high)
-        {
-            int mid=(low+high)/2;
-            if(isPossible(arr,mid,d,n))
-            {
-                high=mid-1;
-            }
-            else
-            {
-                low=mid+1;
-            }
-        }
-        return low;
-    }
+      // Code here
+      if(M*K > bloomDay.size())
+      return -1;
+      int low=*min_element(bloomDay.begin(),bloomDay.end());
+      int high=*max_element(bloomDay.begin(),bloomDay.end());
+      while(low<=high)
+      {
+          int mid=(low+high)/2;
+          if(isPossible(bloomDay,mid,K,M))
+          {
+              high=mid-1;
+          }
+          else
+          {
+              low=mid+1;
+          }
+      }
+      return low;
