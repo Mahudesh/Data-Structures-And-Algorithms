@@ -37,16 +37,19 @@ public:
                     q.pop();
                      TreeNode* l=new TreeNode(val);
                      TreeNode* r=new TreeNode(val);
-
-                     if(temp->left)
-                     {
-                        l->left=temp->left;
-                     }
+                    TreeNode* dummyleft=temp->left;
+                    TreeNode* dummyright=temp->right;
+                    //  if(temp->left)
+                    //  {
+                    //     l->left=temp->left;
+                    //  }
+                        l->left=dummyleft;
                         temp->left=l;
-                     if(temp->right)
-                     {
-                        r->right=temp->right;
-                     }
+                    //  if(temp->right)
+                    //  {
+                    //     r->right=temp->right;
+                    //  }
+                      r->right=dummyright;
                       temp->right=r;
 
                     
