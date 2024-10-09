@@ -46,7 +46,7 @@ class Solution{
     	}
     	return maxCount;
     }
-//Optimized Approach By Post Order Traversal With A Custom Class
+//Optimized Approach
 /*
     Following is Binary Tree Node structure:
     class TreeNode
