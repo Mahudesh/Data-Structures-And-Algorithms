@@ -46,3 +46,48 @@ class Solution{
     	}
     	return maxCount;
     }
+//Optimized Approach By Post Order Traversal With A Custom Class
+/*
+    Following is Binary Tree Node structure:
+    class TreeNode
+    {
+    public:
+        int data;
+        TreeNode *left, *right;
+        TreeNode() : data(0), left(NULL), right(NULL) {}
+        TreeNode(int x) : data(x), left(NULL), right(NULL) {}
+        TreeNode(int x, TreeNode *left, TreeNode *right) : data(x), left(left), right(right) {}
+    };
+*/
+class NodesParameters
+{
+    public:
+    int minValue,maxSize,maxValue;
+    NodesParameters(int minValue, int maxValue, int maxSize)
+    {
+        this->minValue=minValue;
+        this->maxValue=maxValue;
+        this->maxSize=maxSize;
+    }
+};
+NodesParameters helper(TreeNode* root)
+{
+    if(!root)
+    {
+        return NodesParameters(INT_MAX,INT_MIN,0);
+    }
+    NodesParameters left=helper(root->left);
+    NodesParameters right=helper(root->right);
+    if(left.maxValue<root->data && root->data<right.minValue)
+    {
+        return NodesParameters(min(root->data,left.minValue),max(root->data,right.maxValue),1+left.maxSize+right.maxSize);
+    }
+    return NodesParameters(INT_MIN,INT_MAX,max(left.maxSize,right.maxSize));
+}
+int largestBST(TreeNode * root)
+{
+    // Write your code here.
+   return helper(root).maxSize;
+
+    
+}
