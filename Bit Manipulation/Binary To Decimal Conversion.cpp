@@ -1,12 +1,16 @@
-#include <bits/stdc++.h>
-
-int convert(int N,string &str)
-{
-    // Write your code here.
-    int decimal=0;
-    for(int i=str.length()-1;i>=0;i--)
+public:
+    int binary_to_decimal(string str)
     {
-        decimal=decimal+((str[i]-'0')*(pow(2,N-i-1)));
+        // Code here.
+        int ans=0;
+        int power=1;
+        for(int i=str.length()-1;i>=0;i--)
+        {
+            if(str[i]=='1')
+            {
+                ans=ans+power;
+            }
+            power=power*2;
+        }
+        return ans;
     }
-    return decimal;
-}
