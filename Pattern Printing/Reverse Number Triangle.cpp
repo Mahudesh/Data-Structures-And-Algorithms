@@ -10,3 +10,9 @@ void nNumberTriangle(int n)
         cout<<endl;
     }
 }
+
+Output: 
+
+1 2 3
+1 2
+1
