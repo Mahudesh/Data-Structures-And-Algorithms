@@ -10,3 +10,7 @@ void triangle(int n)
 		cout<<endl;
 	}
 }
+Output: 
+1
+2 2 
+3 3 3
