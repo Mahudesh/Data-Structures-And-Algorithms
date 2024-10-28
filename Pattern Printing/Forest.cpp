@@ -10,3 +10,8 @@ void nForest(int n)
 		cout<<endl;
 	}
 }
+
+Output: 
+* * *
+* * *
+* * *
