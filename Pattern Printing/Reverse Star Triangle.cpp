@@ -21,3 +21,8 @@ void nStarTriangle(int n)
 
     }
 }
+Output: 
+
+*****
+ ***
+  *
