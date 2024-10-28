@@ -19,3 +19,10 @@ void nStarTriangle(int n) {
         cout<<endl;
     }
 }
+
+
+Output: 
+
+  *
+ ***
+*****
