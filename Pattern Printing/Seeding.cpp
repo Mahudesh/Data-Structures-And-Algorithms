@@ -10,3 +10,7 @@ void seeding(int n)
 		cout<<endl;
 	}
 }
+Output: 
+* * *
+* *
+*
