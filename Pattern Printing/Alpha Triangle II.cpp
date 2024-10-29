@@ -15,3 +15,9 @@ int main()
         cout<<endl;
     }
 }
+
+Output:
+D
+C D
+B C D
+A B C D
