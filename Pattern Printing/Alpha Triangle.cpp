@@ -12,3 +12,8 @@ void alphaTriangle(int n)
         cout<<endl;
     }
 }
+
+Output: 
+C
+C B 
+C B A
