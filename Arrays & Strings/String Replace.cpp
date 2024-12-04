@@ -36,16 +36,15 @@ Solution:
 using namespace std;
 int main()
 {
-    string str,s;
-    cin>>str>>s;
-    char ch;
-    cin>>ch;
+    string str;
+    getline(cin,str);
+    string change,key;
+    cin>>change>>key;
     for(int i=0;i<str.length();i++)
     {
-        string temp=str.substr(i,s.length());
-        if(temp==s)
+        if(str.substr(i,change.length())==change)
         {
-            str.replace(i,s.length(),string(1,ch));
+            str.replace(i,change.length(),key);
         }
     }
     cout<<str;
