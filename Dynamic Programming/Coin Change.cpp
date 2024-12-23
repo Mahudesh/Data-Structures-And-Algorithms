@@ -61,5 +61,43 @@ int helper(vector<int>& coins, int ind, int target, vector<vector<int>>& dp)
         if(res>=1e9)
         return -1;
         return res;
+         
+        //Space Optimization 
+        vector<int>prev(amount+1,0);
+        vector<int>curr(amount+1,0);
+          for(int i=0;i<=amount;i++)
+        {
+            if(i%coins[0]==0)
+            {
+                prev[i]=i/coins[0];
+            }
+            else
+            {
+                prev[i]=1e9;
+            }
+        }
+
+        for(int ind=1;ind<coins.size();ind++)
+        {
+            for(int target=0;target<=amount;target++)
+            {
+                int notPick=0+prev[target];
+                int pick=INT_MAX;
+                if(coins[ind]<=target)
+                {
+                    pick=1+curr[target-coins[ind]];
+                }
+                curr[target]=min(pick,notPick);
+            }
+            prev=curr;
+        }
+        int res= prev[amount];
+        if(res>=1e9)
+        return -1;
+        return res;
+
     }
+};
+    }
+
 };
