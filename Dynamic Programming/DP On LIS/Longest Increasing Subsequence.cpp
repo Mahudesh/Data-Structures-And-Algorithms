@@ -21,7 +21,8 @@ int helper(vector<int>& nums, int ind, int prev_ind, vector<vector<int>>& dp)
         // return helper(nums,0,-1,dp);
 
         //Tabulation Approach
-        //Bottom Up Approach  vector<vector<int>>dp(n+1, vector<int>(n+1,0));
+        //Bottom Up Approach  
+         vector<vector<int>>dp(n+1, vector<int>(n+1,0));
 
     for(int ind=n-1;ind>=0;ind--)
     {
