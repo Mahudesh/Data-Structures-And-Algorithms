@@ -36,6 +36,9 @@ int matrixMultiplication(vector<int> &arr, int N)
 
     for(int i=N-1;i>=1;i--)
     {
+        //Run j Loop Always From i+1
+        //Since In Recursion Always j Is Greater Than i
+        //It Means That Some Part Of Array Between i And j As Like As Two Pointers
         for(int j=i+1;j<N;j++)
         {
             int mini=1e9;
