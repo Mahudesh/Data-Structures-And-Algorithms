@@ -33,6 +33,7 @@
 //         //So For Every Valid Multiply It By Two
 //         //Subtract The Total Length - Valid Bracket Will Give You Minimum Insertions
 
+//Space Complexity O(1)
 class Solution {
 public:
     int minAddToMakeValid(string s) 
