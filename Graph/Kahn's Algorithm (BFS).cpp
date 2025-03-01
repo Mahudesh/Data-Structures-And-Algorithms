@@ -17,7 +17,7 @@ vector<int> topologicalSort(vector<vector<int>> &edges, int v, int e)
         indegree[ele]++;
     }
 
-    for(int i=0;i<indegree.size();i++)
+    for(int i=0;i<v;i++)
     {
         if(indegree[i]==0)
         q.push(i);
