@@ -89,6 +89,7 @@ int findNumOfProvinces(vector<vector<int>>& roads, int n)
         {
             if(roads[i][j]==1)
             {
+		    //Every 0 To 1 Is A City So Connect The Road From City 0 To City 1
                 ds.UnionByRank(i+1,j+1);
             }
         }
