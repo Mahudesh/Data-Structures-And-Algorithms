@@ -93,26 +93,23 @@ class DisjointSet
         return parent[node] = findParent(parent[node]);
     }
     
-    void UnionByRank(int u, int v)
+    void findUnionBySize(int u, int v)
     {
-        int ult_u = findParent(u);
-        int ult_v = findParent(v);
+        int ult_u=findParent(u);
+        int ult_v=findParent(v);
+
         if(ult_u==ult_v)
         return;
-        
+
         if(size[ult_u]<size[ult_v])
         {
             parent[ult_u]=ult_v;
-        }
-        else if(size[ult_v]<size[ult_u])
-        {
-            parent[ult_v]=ult_u;
+            size[ult_v]+=size[ult_u];
         }
         else
         {
-            parent[ult_u]=ult_v;
-            // rank[ult_v]++;
-            size[ult_v]++;
+            parent[ult_v]=ult_u;
+            size[ult_u]+=size[ult_v];
         }
     }
 };
