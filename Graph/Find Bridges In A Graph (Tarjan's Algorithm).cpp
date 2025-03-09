@@ -10,13 +10,16 @@ void dfs(int node,int parent,vector<vector<int>>& adj, vector<int>& tin, vector<
 
     for(auto adjacent : adj[node])
     {
+        //If It Is Parent Dont Do Anything
         if(adjacent==parent)
         continue;
         if(!visited[adjacent])
         {
+            //If Not Visited Then Call For Its DFS
             dfs(adjacent,node,adj,tin,low,bridges,visited);
+            //Once DFS Gets Over For That Node Do The Low Process
             low[node]=min(low[node],low[adjacent]);
-
+            //Check For Its Critical Connections In A Network
             if(tin[node]<low[adjacent])
             {
                 bridges.push_back({node,adjacent});
