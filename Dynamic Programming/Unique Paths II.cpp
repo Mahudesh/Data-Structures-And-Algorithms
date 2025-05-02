@@ -66,3 +66,25 @@ long long helper(vector<vector<int>>arr, int rows, int cols, vector<vector<int>>
         return dp[m-1][n-1];
     }
 };
+
+//Track The Path
+  cout<<"Minimum Cost: "<<dp[0][0];
+    cout<<endl;
+    
+    int i=0,j=0;
+    vector<pair<int,int>>path;
+    // path.push_back({0,0});
+    while(i<m-1 || j<n-1)
+    {
+        path.push_back({i,j});
+        if(i<m-1 && dp[i][j]-arr[i][j]==dp[i+1][j])
+        i++;
+        else
+        j++;
+    }
+    path.push_back({m-1,n-1});
+    cout<<"Path:"<<endl;
+    for(int i=0;i<path.size();i++)
+    {
+        cout<<"("<<path[i].first<<", "<<path[i].second<<")"<<endl;
+    }
